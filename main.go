@@ -6,11 +6,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello Wordl!"));
+}
+
 func main() {
 	router := mux.NewRouter();
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello Wordl!"));
-	});
+	router.HandleFunc("/", HomeHandler);
 
 	http.ListenAndServe(":3000", router);
 }
